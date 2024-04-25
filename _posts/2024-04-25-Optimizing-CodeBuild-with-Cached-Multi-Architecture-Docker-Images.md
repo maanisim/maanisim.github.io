@@ -3,11 +3,15 @@ layout: single
 title:  "Optimizing CodeBuild with Cached Multi-Architecture Docker Images"
 ---
 
-At the time of writing AWS lacks a straightforward guide on creating multi-architecture CodeBuild containers [the one public blogpost](https://aws.amazon.com/blogs/devops/creating-multi-architecture-docker-images-to-support-graviton2-using-aws-codebuild-and-aws-codepipeline/) they do suggests creating 3 CodeBuild projects -- a far cry from an optimal solution.
+At the time of writing AWS lacks a straightforward guide on creating multi-architecture CodeBuild containers [the one public blogpost](https://aws.amazon.com/blogs/devops/creating-multi-architecture-docker-images-to-support-graviton2-using-aws-codebuild-and-aws-codepipeline/) which exists suggests creating 3 CodeBuild projects -- a far cry from an optimal solution.
 
 My goals for this project are simple:
 - Streamline the AWS architecture
-- Enchance CodeBuild's speed -- which saves us time and money
+- Enchance CodeBuild's speed -- by extension save us time and money
+
+# Pre-requisites
+- This blogpost assumes that you use Amazon ECR & AWS CodeBuild
+- You need CodeBuild IAM role with `AmazonEC2ContainerRegistryFullAccess`
 
 ```yaml
 version: 0.2
