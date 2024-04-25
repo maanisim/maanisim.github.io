@@ -48,7 +48,7 @@ env:
     AWS_ECR_REPOSITORY_NAME: "your-ecr-repository-name"
 ```
 
-In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region for example `eu-west-1`
+Dockerfile
 ```
 # https://github.com/concourse/oci-build-task/issues/117
 ARG BASE_IMAGE=XXXXXXXXXXXX.dkr.ecr.YYYYYYYYY.amazonaws.com/multi-archi
@@ -64,6 +64,9 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
+In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region for example `eu-west-1`
+
+
 # Local vs Cache storage backends
 
 When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html#caching-local) it's important to be aware of it's limitations, as they are not publically documented. 
@@ -74,5 +77,5 @@ When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/
 
 As you can already guess, this means AWS will only use this cache if you constantly run build back-to-back. Most people don't.
 
-Fortunately there is a solution to this, use the ECR repositories as a cache store [simply add --cache-to and --cache-from] and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec that's ~60% speed difference for adding 2 lines.
+Fortunately there is a solution to this "storage backends" use the ECR repositories as a cache store [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec that's ~60% speed difference for adding 2 lines.
 
