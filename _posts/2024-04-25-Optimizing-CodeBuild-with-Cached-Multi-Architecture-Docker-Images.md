@@ -3,6 +3,11 @@ layout: single
 title:  "Optimizing CodeBuild with Cached Multi-Architecture Docker Images"
 ---
 
+At the time of writing AWS lacks a straightforward guide on creating multi-architecture CodeBuild containers [the one public blogpost](https://aws.amazon.com/blogs/devops/creating-multi-architecture-docker-images-to-support-graviton2-using-aws-codebuild-and-aws-codepipeline/) they do suggests creating 3 CodeBuild projects -- a far cry from an optimal solution.
+
+My goals for this project are simple:
+- Streamline the AWS architecture
+- Enchance CodeBuild's speed -- which saves us time and money
 
 ```yaml
 version: 0.2
@@ -35,7 +40,8 @@ phases:
 
 - Best effort only, cache will get wiped if not used for ~15 minutes OR for the total lenght of the previous build - whichever is shorter.
 - For custom cache, it requires the parent directory of the cached directory to exist
-- Requires build to take longer than 5 minutes. This includes all the phases.
+- Requires build to take longer than 5 minutes.
 
 References:
+
 [1] Build caching in AWS CodeBuild -  Local caching  - https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html#caching-local
