@@ -42,14 +42,14 @@ phases:
 ```
 
 The only modification in the buildspec that requires your attention is the name of your ECR repository to be used:
-```
+```yaml
 env:
   variables:
     AWS_ECR_REPOSITORY_NAME: "your-ecr-repository-name"
 ```
 
 Dockerfile
-```
+```Dockerfile
 # https://github.com/concourse/oci-build-task/issues/117
 ARG BASE_IMAGE=XXXXXXXXXXXX.dkr.ecr.YYYYYYYYY.amazonaws.com/multi-archi
 ARG BASE_IMAGE_TAG=latest
@@ -77,7 +77,7 @@ When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/
 - For custom cache, it requires the parent directory of the cached directory to exist
 - Requires build to take longer than 5 minutes.
 
-As you can already guess, this means AWS will only use this cache if you constantly run build back-to-back. Most people don't.
+As you can already guess, this means AWS will only use this cache if you constantly run frequent builds back-to-back. Most people don't.
 
-Fortunately there is a solution to this "storage backends" use the ECR repositories as a cache store [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec that's ~60% speed difference for adding 2 lines.
+Fear not, there is a solution to this "storage backends" use the ECR repositories as a cache store [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec that's ~60% speed difference for adding 2 lines.
 
