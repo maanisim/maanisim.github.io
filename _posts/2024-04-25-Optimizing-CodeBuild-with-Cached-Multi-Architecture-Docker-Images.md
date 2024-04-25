@@ -53,11 +53,13 @@ Dockerfile
 # https://github.com/concourse/oci-build-task/issues/117
 ARG BASE_IMAGE=XXXXXXXXXXXX.dkr.ecr.YYYYYYYYY.amazonaws.com/multi-archi
 ARG BASE_IMAGE_TAG=latest
+
 # Use the Amazon Linux 2 base image from ECR
 FROM public.ecr.aws/amazonlinux/amazonlinux:2
+
 # Install nginx from Amazon Linux Extras repository
 RUN amazon-linux-extras install nginx1 -y
-RUN echo hi
+
 # Expose port 80
 EXPOSE 80
 # Start nginx when the container starts
