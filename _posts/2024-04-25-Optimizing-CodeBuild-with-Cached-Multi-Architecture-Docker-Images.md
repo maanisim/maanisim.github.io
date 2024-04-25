@@ -19,7 +19,7 @@ version: 0.2
 
 env:
   variables:
-    AWS_ECR_REPOSITORY_NAME: "multi-archi"
+    AWS_ECR_REPOSITORY_NAME: "your-ecr-repository-name"#<--- CHANGE ME
 
 phases:
   pre_build:
@@ -41,16 +41,8 @@ phases:
       - echo Build completed on `date`
 ```
 
-The only adjustment in the buildspec that requires your attention is the name of your ECR repository to be used:
-```yaml
-env:
-  variables:
-    AWS_ECR_REPOSITORY_NAME: "your-ecr-repository-name"
-```
-
 Dockerfile
 ```Dockerfile
-# https://github.com/concourse/oci-build-task/issues/117
 ARG BASE_IMAGE=XXXXXXXXXXXX.dkr.ecr.YYYYYYYYY.amazonaws.com/multi-archi
 ARG BASE_IMAGE_TAG=latest
 
@@ -66,7 +58,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region such as `eu-west-1`
+In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region such as `eu-west-1` or other region where your ECR resides, this is necessary as without it buildx does not know where to push the completed image [read here for more information](https://github.com/concourse/oci-build-task/issues/117#issuecomment-1971464672)
 
 
 # Local vs Cache storage backends
