@@ -11,7 +11,7 @@ My goals for this post are:
 
 # Pre-requisites
 - This post assumes the use of Amazon ECR & AWS CodeBuild
-- You need CodeBuild IAM role with `AmazonEC2ContainerRegistryFullAccess`
+- You need CodeBuild IAM role with `AmazonEC2ContainerRegistryFullAccess` managed policy
 
 buildspec.yml
 ```yaml
