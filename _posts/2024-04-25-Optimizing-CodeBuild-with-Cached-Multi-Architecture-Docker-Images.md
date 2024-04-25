@@ -10,7 +10,7 @@ My goals for this project are simple:
 - Enchance CodeBuild's speed -- by extension save us time and money
 
 # Pre-requisites
-- This blogpost assumes that you use Amazon ECR & AWS CodeBuild
+- This blogpost assumes the use of Amazon ECR & AWS CodeBuild
 - You need CodeBuild IAM role with `AmazonEC2ContainerRegistryFullAccess`
 
 buildspec.yml
@@ -41,7 +41,7 @@ phases:
       - echo Build completed on `date`
 ```
 
-The only modification in the buildspec that requires your attention is the name of your ECR repository to be used:
+The only adjustment in the buildspec that requires your attention is the name of your ECR repository to be used:
 ```yaml
 env:
   variables:
@@ -66,7 +66,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region for example `eu-west-1`
+In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region such as `eu-west-1`
 
 
 # Local vs Cache storage backends
@@ -77,7 +77,7 @@ When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/
 - For custom cache, it requires the parent directory of the cached directory to exist
 - Requires build to take longer than 5 minutes.
 
-As you can already guess, this means AWS will only use this cache if you constantly run frequent builds back-to-back. Most people don't.
+AWS will only use the local cache when user has frequent builds back-to-back. It isn't typical for most users to do so.
 
-Fear not, there is a solution to this "storage backends" use the ECR repositories as a cache store [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec that's ~60% speed difference for adding 2 lines.
+However, there's a solution to this issue! use the ECR repositories as a cache store [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec making a notable 60% speed difference for adding 2 flags.
 
