@@ -13,6 +13,7 @@ My goals for this project are simple:
 - This blogpost assumes that you use Amazon ECR & AWS CodeBuild
 - You need CodeBuild IAM role with `AmazonEC2ContainerRegistryFullAccess`
 
+buildspec.yml
 ```yaml
 version: 0.2
 
@@ -40,12 +41,38 @@ phases:
       - echo Build completed on `date`
 ```
 
-# Notes on local cache
+The only modification in the buildspec that requires your attention is the name of your ECR repository to be used:
+```
+env:
+  variables:
+    AWS_ECR_REPOSITORY_NAME: "your-ecr-repository-name"
+```
 
-- Best effort only, cache will get wiped if not used for ~15 minutes OR for the total lenght of the previous build - whichever is shorter.
+In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `YYYYYYYYY` with your AWS region for example `eu-west-1`
+```
+# https://github.com/concourse/oci-build-task/issues/117
+ARG BASE_IMAGE=XXXXXXXXXXXX.dkr.ecr.YYYYYYYYY.amazonaws.com/multi-archi
+ARG BASE_IMAGE_TAG=latest
+# Use the Amazon Linux 2 base image from ECR
+FROM public.ecr.aws/amazonlinux/amazonlinux:2
+# Install nginx from Amazon Linux Extras repository
+RUN amazon-linux-extras install nginx1 -y
+RUN echo hi
+# Expose port 80
+EXPOSE 80
+# Start nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+# Local vs Cache storage backends
+
+When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html#caching-local) it's important to be aware of it's limitations, as they are not publically documented. 
+
+- Best effort only, cache will get wiped if not used for ~15 minutes OR for the total length of the previous build - whichever is shorter.
 - For custom cache, it requires the parent directory of the cached directory to exist
 - Requires build to take longer than 5 minutes.
 
-References:
+As you can already guess, this means AWS will only use this cache if you constantly run build back-to-back. Most people don't.
 
-[1] Build caching in AWS CodeBuild -  Local caching  - https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html#caching-local
+Fortunately there is a solution to this, use the ECR repositories as a cache store [simply add --cache-to and --cache-from] and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec that's ~60% speed difference for adding 2 lines.
+
