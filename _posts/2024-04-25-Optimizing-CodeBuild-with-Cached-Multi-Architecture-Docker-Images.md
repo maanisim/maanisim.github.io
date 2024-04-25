@@ -3,15 +3,21 @@ layout: single
 title:  "Optimizing CodeBuild with Cached Multi-Architecture Docker Images"
 ---
 
+![Preview](./../assets/img/CodeBuildMultiArchitectureGraph.png)
+
 At the time of writing AWS lacks a straightforward guide on creating multi-architecture CodeBuild containers [the one public blogpost](https://aws.amazon.com/blogs/devops/creating-multi-architecture-docker-images-to-support-graviton2-using-aws-codebuild-and-aws-codepipeline/) which exists suggests creating 3 CodeBuild projects -- a far cry from an optimal solution.
 
 My goals for this post are:
 - Simplify the AWS architecture -- allowing for easy debugging in the future
 - Enchance CodeBuild's speed via cache -- by extension save building time and money
 
+In the above graph, this design is much simpler and easier to understand any changes that developer performs to the Git repository should be pulled by CodeBuild when pressing the `Start Build` button, or you can directly integrate this into CodePipeline
+
 # Pre-requisites
 - This post assumes the use of Amazon ECR & AWS CodeBuild
 - You need CodeBuild IAM role with `AmazonEC2ContainerRegistryFullAccess` managed policy
+- A Git repository GitHub, GitHub Enterprise, GitLab or CodeCommit
+- (optional) Integration into CodePipeline for automatic deployments
 
 buildspec.yml
 ```yaml
