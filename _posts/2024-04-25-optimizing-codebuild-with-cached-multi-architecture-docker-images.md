@@ -3,7 +3,7 @@ layout: single
 title:  "Optimizing CodeBuild with Cached Multi-Architecture Docker Images"
 ---
 
-![Preview](./../assets/img/CodeBuildMultiArchitectureGraph.png)
+![Preview](./../assets/img/codeBuild-multiarchitecture-graph.png)
 
 At the time of writing AWS lacks a straightforward guide on creating multi-architecture CodeBuild containers [the one public blogpost](https://aws.amazon.com/blogs/devops/creating-multi-architecture-docker-images-to-support-graviton2-using-aws-codebuild-and-aws-codepipeline/) which exists suggests creating 3 CodeBuild projects -- a far cry from an optimal solution.
 
