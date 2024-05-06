@@ -69,7 +69,7 @@ In the `Dockerfile` please modify `XXXXXXXXXXXX` with your AWS account ID and `Y
 
 # Local vs Cache storage backends
 
-When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html#caching-local) it's important to be aware of it's limitations, as they are not publically documented. 
+When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/latest/userguide/build-caching.html#caching-local) it's important to be aware of it's limitations, as they are not publicly documented. 
 
 - Best effort only, cache will get wiped if not used for ~15 minutes OR for the total length of the previous build - whichever is shorter.
 - For custom cache, it requires the parent directory of the cached directory to exist
