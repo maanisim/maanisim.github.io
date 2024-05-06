@@ -1,6 +1,6 @@
 ---
 layout: single
-title:  "Optimizing CodeBuild with Cached Multi-Architecture Docker Images"
+title:  "CodeBuild with Cached Multi-Architecture Docker Images"
 ---
 
 ![Preview](./../assets/img/codebuild-multiarchitecture-graph.png)
