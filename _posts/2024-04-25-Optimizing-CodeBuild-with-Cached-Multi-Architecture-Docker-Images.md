@@ -77,5 +77,5 @@ When using [the local cache in CodeBuild](https://docs.aws.amazon.com/codebuild/
 
 Based on the above details, AWS will only use the local cache when user has frequent builds back-to-back. Which isn't typical for most users to do so.
 
-However, there's a solution to this! what if we use ECR repository to store cache insteadk [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will dractically increase, in my case it went from ~1min 31sec to ~33-39sec making a notable 60% speed difference for adding 2 flags.
+However, there's a solution to this! what if we use ECR repository to store cache instead [simply add --cache-to and --cache-from](https://docs.docker.com/build/cache/backends/#command-syntax) and your build speeds will drastically increase, in my case it went from ~1min 31sec to ~33-39sec making a notable 60% speed difference for adding 2 flags.
 
