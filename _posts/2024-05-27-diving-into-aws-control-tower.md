@@ -4,3 +4,5 @@ title:  "Test"
 ---
 
 Test
+
+{% include figure popup=true image_path="./../assets/img/control-tower-account-enrollment-process.png" alt="this is a placeholder image" caption="This is a figure caption." %}
