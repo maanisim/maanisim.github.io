@@ -1,6 +1,11 @@
 ---
 layout: single
 title:  "Test"
+gallery:
+  - url: control-tower-account-enrollment-process.png
+    image_path: ./../assets/img/control-tower-account-enrollment-process.png
+    alt: "placeholder image 1"
+    title: "Title for image 1"
 ---
 
 Test
