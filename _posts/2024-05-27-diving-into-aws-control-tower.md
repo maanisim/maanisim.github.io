@@ -9,7 +9,7 @@ While AWS Organizations allows for your kingdom to exists on the other hand AWS 
 
 Lets look at this graph:
 
-{% include figure popup=true image_path="./../assets/img/control-tower-account-enrollment-process.png" alt="Control Tower enrollment process" caption="A new Account Creation + Enrollment process graphic by [Control Tower guru Vardan Kaushik](https://www.linkedin.com/in/vardankaushik)
+{% include figure popup=true image_path="./../assets/img/control-tower-account-enrollment-process.png" alt="Control Tower enrollment process" caption="A new Account Creation + Enrollment process graphic by Control Tower guru [Vardan Kaushik](https://www.linkedin.com/in/vardankaushik)
 " %}
 
 - First AWS Control Tower relies on Service Catalog Provision Product to add new accounts, this works by provisioning (by default 13 can be more) CloudFormation stacksets in each new account, those stackssets are visible in step (6) 
