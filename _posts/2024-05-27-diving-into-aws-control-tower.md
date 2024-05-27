@@ -3,7 +3,7 @@ layout: single
 title:  "Dive deep into AWS Control Tower"
 ---
 
-To simplify this, I want you to first imagine AWS Organizations as a kingdom that you have to manage, with the AWS accounts as the royal subjects whom you govern, AWS Control Tower is akin to a wise advisor of your kingdom.
+I want you to first imagine AWS Organizations as a kingdom that you have to manage, with the AWS accounts as the royal subjects whom you govern, AWS Control Tower is akin to a wise advisor of your kingdom.
 
 While AWS Organizations allows for your kingdom to exists on the other hand AWS Control Tower is an extension of it, it helps in establishing rules on what you cannot do (via guardrails) establishing a set of best practices (via blueprints) and simplifies the process of creating additional royal subjects (AWS accounts via account factory)
 
