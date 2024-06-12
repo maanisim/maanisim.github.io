@@ -15,9 +15,3 @@ We can see the whole account enrollement process below:
 - First AWS Control Tower relies on Service Catalog Provision Product to add new accounts, this works by provisioning (by default 13* can be more) CloudFormation stacksets in each new account, those StacksSets are consolidated into a block in step (6) 
 
 - When a new AWS account gets created as part of Organization by default it assumes the same CloudTrail log paths as the managment account, this is intended default behaviour and can be disabled only on creation of the Control Tower
-
-
-
-
-
-
