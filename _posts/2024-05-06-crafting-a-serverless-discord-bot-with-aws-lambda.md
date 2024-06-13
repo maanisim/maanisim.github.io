@@ -3,8 +3,6 @@ layout: single
 title:  "Crafting a Serverless Discord Bot with AWS Lambda"
 ---
 
-# Serverless Discord Bots with Slash Commands
-
 As of 2021, Discord has significantly enhanced its functionality with the introduction of Discord slash commands. This new feature allows developers to create more interactive and responsive bots by forwarding events directly to specified interaction endpoint. This shift means you are no longer required to listen continuously for message events, leading to more efficient and scalable bot development.
 
 ![Preview](./../assets/img/serverless-discord-architecture.png)
