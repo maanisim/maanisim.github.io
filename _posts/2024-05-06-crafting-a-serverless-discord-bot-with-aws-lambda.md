@@ -52,7 +52,7 @@ This setup ensures that your bot is both responsive and scalable, leveraging the
 The introduction of slash commands by Discord marks a significant step forward for bot development. By integrating AWS Lambda and API Gateway, you can create scalable, efficient, and powerful bots that respond only when needed, optimizing resource usage and providing a seamless user experience. 
 
 Useful links:
-[Proof of concept repository](https://github.com/maanisim/serverless-discord)
-[Indepth look into recieving/sending traffic to discord](https://discord.com/developers/docs/interactions/receiving-and-responding#security-and-authorization)
-[Steps on registering commands with discord](https://discord.com/developers/docs/interactions/application-commands#making-a-global-command
+- [Proof of concept repository](https://github.com/maanisim/serverless-discord)
+- [Indepth look into recieving/sending traffic to discord](https://discord.com/developers/docs/interactions/receiving-and-responding#security-and-authorization)
+- [Steps on registering commands with discord](https://discord.com/developers/docs/interactions/application-commands#making-a-global-command
 )
