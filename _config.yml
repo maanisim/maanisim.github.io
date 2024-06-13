@@ -105,7 +105,8 @@ analytics:
 # Site Author
 author:
   name             : 
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  #avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/img/codebuild-multiarchitecture-graph.png"
   bio              : "I ❤️ Snowboard, SciFi & Chess"
   location         : "Ireland"
   email            :
