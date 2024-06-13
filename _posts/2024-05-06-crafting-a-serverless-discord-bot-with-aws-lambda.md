@@ -47,11 +47,9 @@ After which we need to respond to any attempt of verify whether the endpoint is 
             return {"type": 1}
 ```
 
-This setup ensures that your bot is both responsive and scalable, leveraging the power of serverless architecture to handle high volumes of interactions efficiently.
+Now you have all the ingridients to make a serverless Discord bot running on cloud! The introduction of slash commands by Discord marks a significant step forward for us developers. By integrating AWS Lambda and API Gateway, you can create more scalable, efficient, and powerful bots that respond only when needed, optimizing resource usage and providing a seamless user experience. 
 
-The introduction of slash commands by Discord marks a significant step forward for bot development. By integrating AWS Lambda and API Gateway, you can create scalable, efficient, and powerful bots that respond only when needed, optimizing resource usage and providing a seamless user experience. 
-
-Useful links:
+Useful other links:
 - [Proof of concept repository](https://github.com/maanisim/serverless-discord)
 - [Indepth look into recieving/sending traffic to discord](https://discord.com/developers/docs/interactions/receiving-and-responding#security-and-authorization)
 - [Steps on registering commands with discord](https://discord.com/developers/docs/interactions/application-commands#making-a-global-command
