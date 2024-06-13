@@ -107,7 +107,7 @@ author:
   name             : 
   #avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   avatar           : "/assets/img/avatar.jpg"
-  bio              : "I ❤️ Snowboard, SciFi & Chess"
+  bio              : "A blog about cool tech"
   location         : "Ireland"
   email            :
   links:
@@ -128,7 +128,7 @@ author:
       url: "https://github.com/maanisim"
     - label: "LinkedIn"
       icon: "fab fa-fw fa-linkedin"
-      url: "https://github.com/maanisim"
+      url: "https://www.linkedin.com/in/anisimow"
       # url: "https://github.com/"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
