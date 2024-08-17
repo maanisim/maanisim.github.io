@@ -3,7 +3,7 @@ layout: single
 title:  "Network Traffic in Elastic Beanstalk visualised"
 ---
 
-In Beanstalk ports can quickly become confusing as Nginx and Docker comes into the mix, in this article we will try to visualise the 2 primary ways of serving web traffic and their respective adavantages.
+In Beanstalk's there are 2 primary ways of configuring HTTPs, we will visualise both and demistify different ports used by default.
 
 Both approaches have their own advantages, the most common way is indeed Traffic via ALB as it's easier to setup and more scalable
 
@@ -17,6 +17,42 @@ Advantages:
 - (optional) You can add AWS WAF on top of the Load Balancer
 - Allows for distributing the traffic more equally between the instances
 - Less computing power needed as instance does not need to decrypt incoming HTTPs traffic
+
+You can find the ports for the Nginx and where it serves traffic to via the 2 commands listed below:
+
+```bash
+$ cat /etc/nginx/nginx.conf | grep "listen 80" -A 20 -B 1
+    server {
+        listen 80 default_server; #<--- HERE
+        gzip on;
+        gzip_comp_level 4;
+        gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+
+        access_log    /var/log/nginx/access.log main;
+
+        location / {
+            proxy_pass            http://docker;
+            proxy_http_version    1.1;
+
+            proxy_set_header    Connection             $connection_upgrade;
+            proxy_set_header    Upgrade                $http_upgrade;
+            proxy_set_header    Host                   $host;
+            proxy_set_header    X-Real-IP              $remote_addr;
+            proxy_set_header    X-Forwarded-For        $proxy_add_x_forwarded_for;
+        }
+
+        # Include the Elastic Beanstalk generated locations
+        include conf.d/elasticbeanstalk/*.conf;
+    }
+```
+
+```bash
+$ cat /etc/nginx/conf.d/elasticbeanstalk-nginx-docker-upstream.conf 
+upstream docker {
+    server 172.17.0.2:8000; #<--- HERE
+    keepalive 256;
+}
+```
 
 ## Direct to instance
 
