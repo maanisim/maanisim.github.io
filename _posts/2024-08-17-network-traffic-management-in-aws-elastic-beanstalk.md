@@ -18,8 +18,10 @@ Advantages:
 - Allows for distributing the traffic more equally between the instances
 - Less computing power needed as instance does not need to decrypt incoming HTTPs traffic
 
-You can find the ports for the Nginx and where it serves traffic to via the 2 commands listed below:
+You can find the ports for the Nginx which were visualised in the graph above via the 2 commands listed below
 
+
+The port on which Nginx itself is listening:
 ```bash
 $ cat /etc/nginx/nginx.conf | grep "listen 80" -A 20 -B 1
     server {
@@ -46,6 +48,7 @@ $ cat /etc/nginx/nginx.conf | grep "listen 80" -A 20 -B 1
     }
 ```
 
+The port on which Docker Application itself should be running:
 ```bash
 $ cat /etc/nginx/conf.d/elasticbeanstalk-nginx-docker-upstream.conf 
 upstream docker {
