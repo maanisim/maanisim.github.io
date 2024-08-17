@@ -64,5 +64,5 @@ upstream docker {
 You can configure the terminate at instance HTTPS [in Docker via following link](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/https-singleinstance-docker.html) or for other Platform types use [this link instead](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/https-singleinstance-docker.html)
 
 Advantages:
-- More secure, as we prevent from any middleman attacks from inside of the network
-- Cheaper as we do not require ALB to be present
+- Higher level of security, as we prevent any middleman attacks from inside of the VPC
+- Cheaper as we do not require ALB to be present to serve our traffic
