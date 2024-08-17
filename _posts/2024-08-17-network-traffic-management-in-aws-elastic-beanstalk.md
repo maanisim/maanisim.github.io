@@ -3,7 +3,7 @@ layout: single
 title:  "Network Traffic in Elastic Beanstalk visualised"
 ---
 
-In Beanstalk's there are 2 primary ways of configuring HTTPs, we will visualise both and demistify different ports used by default when combining Nginx and Docker.
+In Beanstalk there are 2 primary ways of configuring HTTPs, we will visualise both and demistify different ports used by default when combining Nginx and Docker.
 
 Both approaches to configuring HTTPs have their own advantages, the most common way is to terminate HTTPs Traffic at ALB as it's easier to setup while maintaining scalablility
 
